@@ -1,0 +1,13 @@
+class Solution:
+    def minOperations(self, logs: List[str]) -> int:
+        depth = 0
+        for log in logs:
+            if ".." in log:
+                if depth > 0:
+                    depth -= 1
+            elif "." in log and ".." not in log:
+                continue
+            else:
+                depth += 1
+        
+        return max(depth, 0)
